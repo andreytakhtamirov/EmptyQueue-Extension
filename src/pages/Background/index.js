@@ -17,12 +17,12 @@ chrome.runtime.onInstalled.addListener(async function (details) {
 });
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
-    if (message.type === "SAVE_INTERCEPTED_DATA") {
-        const interceptedData = message.data;
+    if (message.type === "SAVE_LAST_QUEUE_EVENT") {
+        const { lastEmptyQueueEvent } = message.data;
         const lastSyncTime = new Date().toLocaleString();
 
         chrome.storage.local.set({
-            interceptedData,
+            lastEmptyQueueEvent,
             lastSyncTime
         }, () => {
             console.log("Data and sync time saved.");

@@ -18,9 +18,9 @@ const Popup = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await chrome.storage.local.get(["interceptedData", "lastSyncTime"]);
-      if (result.interceptedData) {
-        setData(result.interceptedData);
+      const result = await chrome.storage.local.get(["lastEmptyQueueEvent", "lastSyncTime"]);
+      if (result.lastEmptyQueueEvent) {
+        setData(result.lastEmptyQueueEvent);
         setLastSyncTime(result.lastSyncTime || "Unknown");
       } else {
         setData(null);
@@ -76,7 +76,7 @@ const Popup = () => {
 
   const renderContent = () => {
     if (!data) return <p className="text-empty-view">No data received yet</p>;
-    const { lastEmptyQueueEvent } = data;
+    const lastEmptyQueueEvent = data;
     if (!lastEmptyQueueEvent) return <p className="text-empty-view">No project data found</p>;
 
     const {

@@ -24,9 +24,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
             if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
                 try {
-                    // Try sending the message
                     chrome.runtime.sendMessage({
-                        type: "SAVE_INTERCEPTED_DATA",
+                        type: "SAVE_LAST_QUEUE_EVENT",
                         data: interceptedData,
                     });
                 } catch (error) {
