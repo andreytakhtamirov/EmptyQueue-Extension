@@ -1,0 +1,58 @@
+{
+  "manifest_version": 3,
+  "name": "EmptyQueue",
+  "description": "Easily view project details and track your task queue on the Outlier platform.",
+  "permissions": [
+    "storage",
+    "declarativeNetRequest"
+  ],
+  "host_permissions": [
+    "https://app.outlier.ai/*",
+    "\u003Call_urls\u003E"
+  ],
+  "options_page": "options.html",
+  "background": {
+    "service_worker": "background.bundle.js"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": "icon48.png"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "32": "icon32.png",
+    "48": "icon48.png",
+    "128": "icon128.png"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "http://*/*",
+        "https://*/*",
+        "<all_urls>",
+        "https://app.outlier.ai/*"
+      ],
+      "js": [
+        "contentScript.bundle.js"
+      ],
+      "css": [
+        "content.styles.css"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    }
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "injected.bundle.js",
+        "content.styles.css",
+        "icon128.png",
+        "icon48.png"
+      ],
+      "matches": [
+        "https://app.outlier.ai/*"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+export const CONFIGURATION_KEY = "44d86428"

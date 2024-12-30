@@ -1,0 +1,76 @@
+.project-container {
+    border-radius: 0.5rem;
+    border: 1px solid rgb(220, 220, 220);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 4px 16px;
+}
+
+.project-item-label {
+    display: flex;
+    margin-top: 8px;
+    font-size: normal;
+    font-weight: bold;
+    align-items: center;
+}
+
+.project-item-value {
+    word-wrap: break-word;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-items {
+    word-wrap: break-word;
+    padding: 4px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-id-container {
+    margin-top: 10px;
+    margin-bottom: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.project-id {
+    word-break: break-all;
+    flex-grow: 1;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 0.3rem;
+    background-color: rgb(230, 230, 230);
+}
+
+.copy-button {
+    padding: 6px 6px;
+    background-color: rgb(230, 230, 230);
+    color: black;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.tag {
+    margin-top: 8px;
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 0.3rem;
+    color: white;
+    font-weight: 600;
+}
+
+.primary {
+    background-color: rgb(68, 110, 227);
+}
+
+.secondary {
+    background-color: rgb(90, 192, 75);
+}

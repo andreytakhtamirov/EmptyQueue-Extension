@@ -1,0 +1,67 @@
+.App {
+  position: relative;
+  text-align: center;
+  height: 100%;
+  padding: 8px;
+}
+
+.App-header {
+  height: 0%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: left;
+  text-align: left;
+  font-size: calc(5px + 2vmin);
+  color: rgb(56, 56, 56);
+  margin-bottom: 16px;
+}
+
+.settings-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 1000;
+}
+
+.content-container {
+  font-size: calc(8px + 2vmin);
+  padding: 0px 10px;
+  text-align: left;
+}
+
+.data-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.extra-top-padding {
+  padding: 8px 0px;
+}
+
+.footer-note {
+  padding-top: 36px;
+}
+
+.text-empty-view {
+  color: rgb(81, 81, 81);
+  text-align: center;
+  font-size: large;
+}
+
+footer {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 2px;
+  margin: 0px;
+  padding: 0px;
+}
+
+* {
+  margin: 0;
+  padding: 2px;
+}
