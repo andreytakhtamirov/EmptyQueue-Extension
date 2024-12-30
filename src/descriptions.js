@@ -26,7 +26,7 @@ export const EQ_REASONS = {
 export const USER_LEVELS = {
     "-1": "Attempter",
     "0": "Normal Review",
-    "1": "Likely Senior Review",
+    "1": "Senior Review",
     "4": "Consensus Review",
     "8": "Expedited",
     "10": "Corporate",
