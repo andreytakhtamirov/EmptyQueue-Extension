@@ -5,6 +5,7 @@ import ProjectItem from "../Components/ProjectItem/index"
 import SupportPrompt from "../Components/SupportPrompt";
 import SettingsButton from "../Components/SettingsButton/index";
 import { CONFIGURATION_KEY } from "../../constants";
+import { USER_LEVELS } from "../../descriptions";
 
 const Popup = () => {
   const [data, setData] = useState(null);
@@ -35,17 +36,9 @@ const Popup = () => {
   }, []);
 
   const getReviewLevelText = (level) => {
-    const levelMap = {
-      "-1": "-1 (Attempter)",
-      "0": "0 (Reviewer)",
-      "1": "1 (Reviewer)",
-      "10": "10 (Senior Reviewer)",
-    };
-
-    return levelMap[level] || "Unknown";
+    return `${level} (${USER_LEVELS[level] || `${level} Unknown`})`;
   };
-
-  const renderEmptyQueueReasons = (emptyQueueReasons = {}, primaryMap = {}, secondaryMap = {}) => {
+  const renderEmptyQueueReasons = (emptyQueueReasons = {}, primaryMap = {}, secondaryMap = {}, projectNames = {}) => {
     const reasons = Object.entries(emptyQueueReasons).map(([projectId, reasons]) => {
       let tag = null;
       if (primaryMap[projectId] != null) {
@@ -53,6 +46,8 @@ const Popup = () => {
       } else if (secondaryMap[projectId] != null) {
         tag = "secondary";
       }
+
+      const projectName = projectNames[projectId] || "Unknown Project";
 
       const reviewLevelText = primaryMap[projectId]
         ? getReviewLevelText(primaryMap[projectId])
@@ -64,6 +59,7 @@ const Popup = () => {
         <ProjectItem
           key={`reason-${projectId}`}
           projectId={projectId}
+          projectName={projectName} // Passing project name to ProjectItem
           reasons={reasons}
           reviewLevelText={reviewLevelText}
           tag={tag}
@@ -85,6 +81,11 @@ const Popup = () => {
       emptyQueueReasons = {},
     } = lastEmptyQueueEvent;
 
+    const projectNames = Object.fromEntries([
+      ...currentPrimaryTeamAssignments.map(({ projectId, projectName }) => [projectId, projectName]),
+      ...currentSecondaryTeamAssignments.map(({ projectId, projectName }) => [projectId, projectName])
+    ]);
+
     const primaryMap = Object.fromEntries(
       currentPrimaryTeamAssignments.map(({ projectId, reviewLevel }) => [projectId, String(reviewLevel)])
     );
@@ -95,7 +96,7 @@ const Popup = () => {
     return (
       <>
         <h2>Projects</h2>
-        {renderEmptyQueueReasons(emptyQueueReasons, primaryMap, secondaryMap)}
+        {renderEmptyQueueReasons(emptyQueueReasons, primaryMap, secondaryMap, projectNames)}
       </>
     );
   };

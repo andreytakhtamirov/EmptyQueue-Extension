@@ -5,6 +5,15 @@
     padding: 4px 16px;
 }
 
+.project-item-name {
+    display: flex;
+    margin-top: 8px;
+    font-size: large;
+    font-weight: 600;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
 .project-item-label {
     display: flex;
     margin-top: 8px;
@@ -73,4 +82,23 @@
 
 .secondary {
     background-color: rgb(90, 192, 75);
+}
+
+.reason-item {
+    justify-content: space-between;
+    display: flex;
+    word-break: break-all;
+}
+
+.tooltip-container {
+    display: inline-block;
+    position: relative;
+    margin-left: 5px;
+}
+
+.question-mark {
+    color: #007BFF;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
 }
