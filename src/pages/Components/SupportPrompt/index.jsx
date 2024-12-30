@@ -35,11 +35,11 @@ const SupportPrompt = ({ optInStatus, hasSelectedOption = false, onPositiveRespo
 
     return (
         <div className={`${!hasSelectedOption ? "bandwidth-sharing-prompt-card" : "bandwidth-sharing-prompt-inline"}`}>
-            <p>
+            <div>
                 {getMessage()}
                 <br />
                 It's completely anonymous and doesn't involve any personal data. For more details, <b><a target="_blank" rel="noopener noreferrer" href="https://www.mellow.tel/user-control/#manage-settings">visit Mellowtel's page</a>.</b>
-            </p>
+            </div>
             <div className="button-group">
                 <button
                     className={`button-positive btn ${!hasSelectedOption ? "active" : optInStatus ? "active" : "inactive"}`}
