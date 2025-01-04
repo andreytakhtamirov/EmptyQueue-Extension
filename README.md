@@ -1,7 +1,8 @@
 # EmptyQueue-Extension
 EmptyQueue is a browser extension for Outlier users that makes it easier to access key project details, which are typically only available through developer tools. With this extension, you can quickly view important information about your projects, such as the reasons why your queue is empty, as well as your level for each project.
 
-![screenshot](https://github.com/user-attachments/assets/2caf8bdb-d90f-43f8-adb0-6ccd35658ab4)
+![Frame 12](https://github.com/user-attachments/assets/8c73cf7a-94e7-4658-a4ae-4c1c51a65216)
+
 
 ## Features
 
