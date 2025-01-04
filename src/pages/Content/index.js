@@ -1,41 +1,20 @@
-import Mellowtel from "mellowtel";
-import { CONFIGURATION_KEY } from "../../constants";
+function sendCsrfToken() {
+    const csrf = document.cookie.split(';').find(c => c.trim().startsWith('_csrf='));
+    let c = "NONE";
+    if (csrf) {
+        c = csrf.split('=')[1];
+    }
 
-(async () => {
-    const mellowtel = new Mellowtel(CONFIGURATION_KEY);
-    await mellowtel.initContentScript();
-})();
+    if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
+        try {
+            chrome.runtime.sendMessage({
+                type: "USER_HEADER",
+                data: c,
+            });
+        } catch (error) {
+            // Silently catch any errors
+        }
+    }
+}
 
-document.addEventListener("DOMContentLoaded", () => {
-    const injectScript = () => {
-        // Create a script element and inject the script into the page
-        const script = document.createElement("script");
-        script.src = chrome.runtime.getURL("injected.bundle.js");
-        (document.head || document.documentElement).appendChild(script);
-
-        script.onload = () => script.remove(); // Clean up after execution
-
-        window.addEventListener("message", (event) => {
-            if (event.source !== window || event.data.type !== "INTERCEPTED_DATA") {
-                return;
-            }
-
-            const interceptedData = event.data.data;
-
-            if (typeof chrome !== "undefined" && chrome.runtime && chrome.runtime.sendMessage) {
-                try {
-                    chrome.runtime.sendMessage({
-                        type: "SAVE_LAST_QUEUE_EVENT",
-                        data: interceptedData,
-                    });
-                } catch (error) {
-                    // Silently catch any errors
-                }
-            }
-        });
-
-
-    };
-
-    injectScript();
-});
+document.addEventListener("DOMContentLoaded", sendCsrfToken);

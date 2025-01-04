@@ -27,9 +27,16 @@
   "content_scripts": [
     {
       "matches": [
-        "http://*/*",
-        "https://*/*",
-        "<all_urls>",
+        "<all_urls>"
+      ],
+      "js": [
+        "contentScriptMellowtel.bundle.js"
+      ],
+      "run_at": "document_start",
+      "all_frames": true
+    },
+    {
+      "matches": [
         "https://app.outlier.ai/*"
       ],
       "js": [
@@ -45,7 +52,6 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "injected.bundle.js",
         "content.styles.css",
         "icon128.png",
         "icon48.png"

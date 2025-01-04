@@ -42,10 +42,10 @@ var options = {
     popup: path.join(__dirname, 'src', 'pages', 'Popup', 'index.jsx'),
     background: path.join(__dirname, 'src', 'pages', 'Background', 'index.js'),
     contentScript: path.join(__dirname, 'src', 'pages', 'Content', 'index.js'),
-    injected: path.join(__dirname, 'src', 'pages', 'Injected', 'index.js'),
+    contentScriptMellowtel: path.join(__dirname, 'src', 'pages', 'ContentMellowtel', 'index.js'),
   },
   chromeExtensionBoilerplate: {
-    notHotReload: ['background', 'contentScript'],
+    notHotReload: ['background', 'contentScript', 'contentScriptMellowtel'],
   },
   output: {
     filename: '[name].bundle.js',
