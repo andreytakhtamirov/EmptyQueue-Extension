@@ -1,6 +1,6 @@
 {
   "name": "empty-queue-extension",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Easily view project details and track your task queue on the Outlier platform.",
   "license": "MIT",
   "repository": {
@@ -13,7 +13,6 @@
     "prettier": "prettier --write '**/*.{js,jsx,ts,tsx,json,css,scss,md}'"
   },
   "dependencies": {
-    "mellowtel": "^1.5.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.4.0",

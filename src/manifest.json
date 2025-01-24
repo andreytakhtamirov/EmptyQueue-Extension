@@ -3,14 +3,11 @@
   "name": "EmptyQueue",
   "description": "Easily view project details and track your task queue on the Outlier platform.",
   "permissions": [
-    "storage",
-    "declarativeNetRequest"
+    "storage"
   ],
   "host_permissions": [
-    "https://app.outlier.ai/*",
-    "\u003Call_urls\u003E"
+    "https://app.outlier.ai/*"
   ],
-  "options_page": "options.html",
   "background": {
     "service_worker": "background.bundle.js"
   },
@@ -25,16 +22,6 @@
     "128": "icon128.png"
   },
   "content_scripts": [
-    {
-      "matches": [
-        "<all_urls>"
-      ],
-      "js": [
-        "contentScriptMellowtel.bundle.js"
-      ],
-      "run_at": "document_start",
-      "all_frames": true
-    },
     {
       "matches": [
         "https://app.outlier.ai/*"

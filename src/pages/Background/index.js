@@ -1,20 +1,4 @@
-import Mellowtel from "mellowtel";
-import { CONFIGURATION_KEY, OUTLIER_SITE_URL } from "../../constants";
-
-let mellowtel;
-
-(async () => {
-    mellowtel = new Mellowtel(CONFIGURATION_KEY);
-    await mellowtel.initBackground();
-})();
-
-chrome.runtime.onInstalled.addListener(async function (details) {
-    console.log("Extension Installed or Updated");
-    if (details.reason === "install") {
-        const uninstallURl = await mellowtel.generateFeedbackLink();
-        chrome.runtime.setUninstallURL(uninstallURl);
-    }
-});
+import { OUTLIER_SITE_URL } from "../../constants";
 
 chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     if (message.type === "USER_HEADER") {

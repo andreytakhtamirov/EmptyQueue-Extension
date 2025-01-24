@@ -1,21 +1,11 @@
 import React, { useState, useEffect } from "react";
-import Mellowtel from "mellowtel";
 import "./Popup.css";
 import ProjectItem from "../Components/ProjectItem/index"
-import SupportPrompt from "../Components/SupportPrompt";
-import SettingsButton from "../Components/SettingsButton/index";
-import { CONFIGURATION_KEY } from "../../constants";
 import { USER_LEVELS } from "../../descriptions";
 
 const Popup = () => {
   const [data, setData] = useState(null);
   const [lastSyncTime, setLastSyncTime] = useState("Unknown");
-  const [optInStatus, setOptInStatus] = useState(null);
-  const mellowtel = new Mellowtel(CONFIGURATION_KEY);
-
-  function startMellowtel() {
-    mellowtel.start();
-  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,10 +17,6 @@ const Popup = () => {
         setData(null);
       }
     };
-
-    chrome.storage.local.get('mellowtelEnabled', (result) => {
-      setOptInStatus(result.mellowtelEnabled);
-    });
 
     fetchData();
   }, []);
@@ -101,39 +87,11 @@ const Popup = () => {
     );
   };
 
-  const saveSupportChoice = (value) => {
-    chrome.storage.local.set({ mellowtelEnabled: value });
-  };
-
-  const handlePositiveResponse = async () => {
-    saveSupportChoice(true);
-    setOptInStatus(true);
-    await mellowtel.optIn();
-    startMellowtel();
-  };
-
-  const handleNegativeResponse = () => {
-    saveSupportChoice(false);
-    setOptInStatus(false);
-    mellowtel.optOut();
-  };
-
   return (
     <div className="App">
       <header className="App-header">
         <h1>EmptyQueue</h1>
       </header>
-      {optInStatus != null &&
-        <div className="settings-button">
-          <SettingsButton optInStatus={optInStatus} onPositiveResponse={handlePositiveResponse} onNegativeResponse={handleNegativeResponse} />
-        </div>
-      }
-      {optInStatus == null &&
-        <SupportPrompt
-          optInStatus={optInStatus}
-          onPositiveResponse={handlePositiveResponse}
-          onNegativeResponse={handleNegativeResponse}
-        />}
       <div className="content-container">
         <div className="data-container">
           {renderContent()}
